@@ -1,3 +1,3 @@
 # WCC homework
 
-![my gif](/mygif.gif)
+![my gif](public/mygif.gif)
