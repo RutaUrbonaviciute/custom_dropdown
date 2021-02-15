@@ -1,0 +1,47 @@
+.search-container {
+  align-items: center;
+  background: linear-gradient(0.25turn, #ec6633, #e93f33);
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 26px 26px;
+}
+
+.search-button {
+  border: none;
+  border-radius: 2px;
+  background-color: white;
+  padding:8px;
+
+  &:hover {
+    // cursor: pointer;
+    background-color: #61dafb;
+  }
+}
+
+.search-input {
+  display:flex;
+}
+
+// .App {
+//   text-align: center;
+// }
+
+// .App-logo {
+//   height: 40vmin;
+//   pointer-events: none;
+// }
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .App-logo {
+//     animation: App-logo-spin infinite 20s linear;
+//   }
+// }
+
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
