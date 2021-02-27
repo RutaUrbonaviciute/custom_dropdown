@@ -1,6 +1,14 @@
+$light-orange: #ec6633;
+$dark-orange: #e93f33;
+
+$dark-grey: #39424a;
+$light-grey: #667580;
+
+$small-margin: 10px;
+
 .search-container {
   align-items: center;
-  background: linear-gradient(0.25turn, #ec6633, #e93f33);
+  background: linear-gradient(0.25turn, $light-orange, $dark-orange);
   display: flex;
   justify-content: space-between;
   padding: 24px 26px 26px;
@@ -10,20 +18,182 @@
   border: none;
   border-radius: 2px;
   background-color: white;
-  padding:8px;
+  padding: 12px;
+
+  &__icon {
+    height: 30px;
+    width: 30px;
+    color: #e83f33;
+  }
 
   &:hover {
     // cursor: pointer;
     background-color: #61dafb;
+    transition: all 2s ease-out;
   }
 }
 
 .search-input {
-  display:flex;
+  position: relative;
+  width: 100%;
+  margin-right: 4px;
+
+  &__button {
+    border: none;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    height: 54px;
+    padding: 0 0 0 12px;
+    border-radius: 2px;
+    width: 100%;
+
+    &__icon {
+      height: 30px;
+      width: 30px;
+      color: white;
+      margin-right: $small-margin;
+    }
+
+    &__placeholder {
+      color: whitesmoke;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  // &__field {
+  //   color: whitesmoke;
+  //   font-size: 16px;
+  //   background: none;
+  //   border: none;
+  //   // margin-left: 12px;
+  //   font-weight: 600;
+  //   width: -webkit-fill-available;
+  //   height: 100%;
+  //   padding: 0;
+  //   margin-left: 12px;
+  //   padding-left: 14px;
+
+  //   &::before {
+  //     content: "♥";
+  //   }
+
+  //   &::placeholder {
+  //     color: white;
+  //   }
+
+  // }
 }
 
-// .App {
-//   text-align: center;
+.input-popover {
+  position: absolute;
+  background: white;
+  transition: all 0.3s ease-out;
+  color: $dark-grey;
+  outline: none;
+  margin-left: 50px;
+  align-items: center;
+  display: none;
+  align-items: center;
+  top: -$small-margin;
+  height: calc(100% + 10px);
+  width: calc(100% - 50px);
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease-out;
+
+  &__icon {
+    color: black;
+    height: 20px;
+    width: 20px;
+    margin-left: $small-margin;
+  }
+
+  &__field-container {
+    text-align: left;
+    margin-left: $small-margin;
+  }
+
+  &__input {
+    border: none;
+    background-color: #fefefe;
+    padding: 10px;
+    caret-color: lighten($light-orange, 20%);
+    font-size: 22px;
+    color: $dark-grey;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $dark-grey;
+    font-weight: 600;
+    padding-left: $small-margin;
+  }
+}
+
+.kazkas {
+  background-color: red;
+}
+
+.dropdown {
+  &__element {
+    display: block;
+    width: -webkit-fill-available;
+    text-align: left;
+    background-color: white;
+    margin-left: 12px;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $light-grey;
+
+    &:hover {
+      background-color: sandybrown;
+    }
+  }
+}
+
+#popoverOpener {
+  position: absolute;
+  left: 50%;
+  margin-left: -10vw;
+  text-align: center;
+  top: 45vh;
+  width: 20vw;
+}
+
+.bootstrap .popover {
+  transition: left 400ms ease-out, top 250ms ease-in;
+}
+
+.popover-content > div {
+  text-align: center;
+}
+
+.popover-content > div > a:link {
+  border: 1px solid lavender;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 4px;
+  text-decoration: none;
+  transition: all 250ms;
+}
+
+.popover-content > div > a:hover {
+  background-color: #eeeeff;
+  border-color: #afafbf;
+  border-radius: 4px;
+  box-shadow: 0 0 4px #ccc;
+}
+
+// input::placeholder {
+//   color: purple
 // }
 
 // .App-logo {
