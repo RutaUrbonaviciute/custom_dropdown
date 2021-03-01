@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useHttp } from '../hooks/http';
+import { CustomDropdown } from './CustomDropdown';
 import { MovieIconContainer } from './MovieIconContainer';
 
+interface Props {
+  onInputPopoverToggle: () => void;
+  setSearchContainerValue: (title: string) => void;
+}
 
-export const InputPopoverField: React.FC = () => {
+export const InputPopoverField: React.FC<Props> = ({ onInputPopoverToggle, setSearchContainerValue }) => {
   const key = "82f71ccc5d36993ad9e836050b46a0ab";
 
   const [inputValue, setInputValue] = useState('');
@@ -13,74 +18,68 @@ export const InputPopoverField: React.FC = () => {
     `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${inputValue}}`,
     [inputValue])
 
-
-
-
-  const myEl = document.getElementById('input-field');
-  console.log(myEl === document.activeElement)
-
   const handleInputFocus = () => {
     setInputFocus(true)
   }
 
   const handleInputBlur = () => {
-    // setInputFocus(false)
+    // nebepasiselectina itemas, fix
+    // setInputFocus(false);
+    // onInputPopoverToggle();
   }
 
   const handleInputChange = (event: any) => {
-    // console.log('stop ptopagation')
-    // event.stopPropagation();
-    // event.stopImmediatePropagation();
-
     const eventValue = event.target.value
     setInputValue(eventValue);
 
-    // eventValue.length >= 3
-  }
 
-
-  const toggleVisibility = (id: string) => {
-    let e = document.getElementById(id)!;
-    if (e.style.display === 'flex') {
-      e.style.display = 'none';
+    if (eventValue.length >= 3) {
+      setDropdownOpen(true);
     } else {
-      e.style.display = 'flex'
-    };
-  }
-
-  const handleInputFieldOpen = () => {
-    toggleVisibility('input-field-popover');
+      setDropdownOpen(false);
+    }
   }
 
   const handleDropdownClick = (movie: any) => {
-    // const selectedElement = movieListExample.find((item: any) => item.id === id);
-    setInputValue(movie?.title || '')
-    console.log(movie)
+    const movieTitle = movie.currentTarget.firstChild.innerHTML;
+    setInputValue(movieTitle || '');
+    setSearchContainerValue(movieTitle || '');
+    onInputPopoverToggle();
+    setDropdownOpen(false);
   }
 
-
-
-
-  if (isLoading) return <>Loading...</>
+  // if (isLoading) return <>Loading...</>
   if (error) return <>Yikes error...</>
 
   if (fetchedData) {
-    console.log(fetchedData.results)
+    // console.log(fetchedData.results)
   }
   console.log(fetchedData)
 
 
   return (
-    <div className='input-popover__field-container'>
-      <input
-        autoFocus
-        type="text"
-        id="input-field"
-        className='input-popover__input'
-        value={inputValue}
-        onChange={handleInputChange} />
-      <div className='input-popover__label'>Enter movie name</div>
-    </div>
+    <>
+      <div className='input-popover__field-container'>
+        <input
+          autoFocus
+          type="text"
+          id="input-field"
+          className='input-popover__input'
+          value={inputValue}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+          onChange={handleInputChange} />
+        <div className='input-popover__label'>Enter a movie name</div>
+      </div>
+      <div>
+        {dropdownOpen && fetchedData && fetchedData.results.length > 0 && inputFocus &&
+          <CustomDropdown
+            movieList={fetchedData.results}
+            handleDropdownClick={handleDropdownClick}
+          />
+        }
+      </div>
+    </>
   )
 }
 

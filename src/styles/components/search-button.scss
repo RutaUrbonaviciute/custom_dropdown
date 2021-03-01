@@ -1,0 +1,17 @@
+.search-button {
+  background-color: $color-white;
+  border-radius: 2px;
+  border: none;
+  padding: 12px;
+
+  &__icon {
+    color: $color-orange;
+    height: 30px;
+    width: 30px;
+  }
+
+  &:hover {
+    background-color: lighten($color-light-orange, 30%);
+    transition: background-color 0.2s ease-out;
+  }
+}

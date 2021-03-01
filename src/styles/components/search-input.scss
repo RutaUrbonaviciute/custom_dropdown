@@ -1,0 +1,30 @@
+.search-input {
+  position: relative;
+  width: 100%;
+  margin-right: 4px;
+
+  &__button {
+    border: none;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    height: 54px;
+    padding: 0 0 0 12px;
+    border-radius: 2px;
+    width: 100%;
+
+    &__icon {
+      height: 30px;
+      width: 30px;
+      color: white;
+      margin-right: $s-margin;
+    }
+
+    &__placeholder {
+      color: whitesmoke;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}

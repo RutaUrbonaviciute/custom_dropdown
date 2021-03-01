@@ -7,9 +7,6 @@ import { MovieIconContainer } from './MovieIconContainer';
 export const SearchInput: React.FC = () => {
   const [searchContainerValue, setSearchContainerValue] = useState('Enter movie name')
 
-  const myEl = document.getElementById('input-field');
-  console.log(myEl === document.activeElement)
-
   const toggleVisibility = (id: string) => {
     let e = document.getElementById(id)!;
     if (e.style.display === 'flex') {
@@ -19,7 +16,7 @@ export const SearchInput: React.FC = () => {
     };
   }
 
-  const handleInputFieldOpen = () => {
+  const handleInputPopoverToggle = () => {
     toggleVisibility('input-field-popover');
   }
 
@@ -28,7 +25,7 @@ export const SearchInput: React.FC = () => {
       <div className="search-input">
         <button
           className="search-input__button"
-          onClick={handleInputFieldOpen}>
+          onClick={handleInputPopoverToggle}>
 
           <div className="search-input__button__icon">
             <MovieIconContainer />
@@ -39,17 +36,8 @@ export const SearchInput: React.FC = () => {
 
         </button>
 
-        <InputPopover />
+        <InputPopover onInputPopoverToggle={handleInputPopoverToggle} setSearchContainerValue={setSearchContainerValue} />
       </div>
-      {/* <div>
-        <input autoFocus type="text" id="input-field" onFocus={handleInputFocus} onBlur={handleInputBlur} className="search-input__field" placeholder="Enter movie name" value={inputValue} onChange={handleInputChange} />
-        {fetchedData.results.length > 0 && inputFocus && fetchedData.results.map((movie: any) => (
-          <button key={movie.id} className="search-input__dropdown-element" onClick={() => handleDropdownClick(movie)}>
-            <div>{movie.title}</div>
-            <div>{movie.release_date}</div>
-          </button>
-        ))}
-      </div> */}
     </>
   );
 }

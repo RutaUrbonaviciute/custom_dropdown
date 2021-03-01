@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useHttp } from '../hooks/http';
+import React from 'react';
 
 interface Props {
   movieList: any,
-  setInputValue: (movieElement: any) => void
+  handleDropdownClick: (movie: any) => void;
 }
 
-export const CustomDropdown: React.FC<Props> = ({ movieList, setInputValue }) => {
+export const CustomDropdown: React.FC<Props> = ({ movieList, handleDropdownClick }) => (
+  <ul className='custom-dropdown'>
+    {movieList.map((movie: any) => (
+      <>
 
-  const handleDropdownClick = (movie: any) => {
-    setInputValue(movie?.title || '')
-  }
+        <li key={movie.id} className="custom-dropdown__element" onClick={handleDropdownClick}>
+          <div id='movie-title' className="custom-dropdown__element__title">{movie.title}</div>
+          <div className="custom-dropdown__element__subtitle">
+            {movie.vote_average} Rating,
+             {movie.release_date && movie.release_date.substr(0, 4)}
+          </div>
+        </li>
 
-  return (
-    <>
-      {movieList.map((movie: any) => (
-        <button key={movie.id} className="dropdown__element" onClick={handleDropdownClick}>
-          <div>{movie.title}</div>
-          <div>{movie.release_date}</div>
-        </button>
-      ))}
-    </>
-  );
-}
+      </>
+    ))}
+  </ul>
+);
+
