@@ -1,4 +1,6 @@
 .search-button {
+  $this: &;
+
   background-color: $color-white;
   border-radius: 2px;
   border: none;
@@ -11,7 +13,13 @@
   }
 
   &:hover {
-    background-color: lighten($color-light-orange, 30%);
-    transition: background-color 0.2s ease-out;
+    background-color: lighten($color-light-orange, 40%);
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+
+    #{$this}__icon {
+      color: $color-dark-grey;
+      transition: color 0.3s ease-out;
+    }
   }
 }

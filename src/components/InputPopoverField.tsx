@@ -1,41 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useHttp } from '../hooks/http';
-import { CustomDropdown } from './CustomDropdown';
-import { MovieIconContainer } from './MovieIconContainer';
+import React, { useState } from 'react';
+import { useHttp } from '../hooks/useHttp';
+import { CustomDropdown } from './Dropdown/CustomDropdown';
 
 interface Props {
-  onInputPopoverToggle: () => void;
+  setInputPopoverOpen: (isOpen: boolean) => void;
   setSearchContainerValue: (title: string) => void;
 }
 
-export const InputPopoverField: React.FC<Props> = ({ onInputPopoverToggle, setSearchContainerValue }) => {
-  const key = "82f71ccc5d36993ad9e836050b46a0ab";
+export const InputPopoverField: React.FC<Props> = ({ setInputPopoverOpen, setSearchContainerValue }) => {
+  const API_KEY = process.env;
+
+  console.log(API_KEY)
 
   const [inputValue, setInputValue] = useState('');
   const [inputFocus, setInputFocus] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [shouldFetch, setShouldFetch] = useState(false);
   const [isLoading, fetchedData, error] = useHttp(
-    `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${inputValue}}`,
-    [inputValue])
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${inputValue}}`,
+    [inputValue], shouldFetch)
 
   const handleInputFocus = () => {
     setInputFocus(true)
-  }
-
-  const handleInputBlur = () => {
-    // nebepasiselectina itemas, fix
-    // setInputFocus(false);
-    // onInputPopoverToggle();
   }
 
   const handleInputChange = (event: any) => {
     const eventValue = event.target.value
     setInputValue(eventValue);
 
-
     if (eventValue.length >= 3) {
+      setShouldFetch(true);
       setDropdownOpen(true);
     } else {
+      setShouldFetch(false);
       setDropdownOpen(false);
     }
   }
@@ -44,37 +41,32 @@ export const InputPopoverField: React.FC<Props> = ({ onInputPopoverToggle, setSe
     const movieTitle = movie.currentTarget.firstChild.innerHTML;
     setInputValue(movieTitle || '');
     setSearchContainerValue(movieTitle || '');
-    onInputPopoverToggle();
     setDropdownOpen(false);
+    setInputPopoverOpen(false);
   }
 
   // if (isLoading) return <>Loading...</>
-  if (error) return <>Yikes error...</>
-
-  if (fetchedData) {
-    // console.log(fetchedData.results)
-  }
-  console.log(fetchedData)
 
 
   return (
     <>
       <div className='input-popover__field-container'>
         <input
-          autoFocus
+          autoComplete="off"
           type="text"
           id="input-field"
           className='input-popover__input'
           value={inputValue}
           onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
           onChange={handleInputChange} />
         <div className='input-popover__label'>Enter a movie name</div>
       </div>
       <div>
-        {dropdownOpen && fetchedData && fetchedData.results.length > 0 && inputFocus &&
+        {dropdownOpen && inputFocus &&
           <CustomDropdown
-            movieList={fetchedData.results}
+            isLoading={!!isLoading}
+            error={!!error}
+            data={fetchedData}
             handleDropdownClick={handleDropdownClick}
           />
         }
@@ -83,3 +75,4 @@ export const InputPopoverField: React.FC<Props> = ({ onInputPopoverToggle, setSe
   )
 }
 
+//fetchedData && fetchedData.results.length > 0 &&
