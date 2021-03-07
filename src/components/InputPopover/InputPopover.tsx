@@ -15,8 +15,11 @@ export const InputPopover: React.FC<Props> = ({ open, setInputPopoverOpen, setSe
 
     if (open) {
       inputPopover.style.display = 'flex';
-      inputField.focus()
+      inputField.focus();
+      inputPopover.style.opacity = '1';
+      inputPopover.style.transition = 'opacity .3s ease-out';
     } else {
+      inputPopover.style.opacity = '0';
       inputPopover.style.display = 'none';
     }
   })

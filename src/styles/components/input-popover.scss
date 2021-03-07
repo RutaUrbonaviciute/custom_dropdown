@@ -1,18 +1,17 @@
 .input-popover {
-  position: absolute;
+  align-items: center;
   background: $color-white;
-  transition: all 0.3s ease-out;
-  color: $color-dark-grey;
-  outline: none;
-  margin-left: 50px;
-  align-items: center;
-  display: none;
-  align-items: center;
   bottom: 0;
+  // box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
+  color: $color-dark-grey;
+  display: none;
+  margin-left: $l-margin;
+  outline: none;
+  padding: $xs-margin $s-margin;
+  position: absolute;
+  // transition: all 0.3s ease-out;
+  opacity: 0;
   width: calc(100% - 50px);
-  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease-out;
-  padding: 5px 10px;
 
   &__icon {
     color: $color-black;

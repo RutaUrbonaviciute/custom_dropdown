@@ -4,10 +4,10 @@ import { SearchContainer } from './components/SearchContainer/SearchContainer';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <>
       <SearchContainer />
       <OutputContainer selectedMovie={'heyzs'} />
-    </div>
+    </>
   );
 }
 
