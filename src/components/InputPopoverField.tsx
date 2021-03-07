@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const InputPopoverField: React.FC<Props> = ({ setInputPopoverOpen, setSearchContainerValue }) => {
-  const API_KEY = process.env;
+  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 
   console.log(API_KEY)
 
