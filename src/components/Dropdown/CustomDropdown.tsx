@@ -10,6 +10,8 @@ interface Props {
 }
 
 export const CustomDropdown: React.FC<Props> = ({ isLoading, error, data, handleDropdownClick }) => {
+  const elementsToShow = 8;
+
   if (error) {
     return (
       <ErrorDropdown />
@@ -21,14 +23,13 @@ export const CustomDropdown: React.FC<Props> = ({ isLoading, error, data, handle
   } else if (data && data.results.length) {
     return (
       <ul className='custom-dropdown'>
-        {data.results.map((movie: any) => (
+        {data.results.slice(0, elementsToShow).map((movie: any) => (
           <li key={movie.id} className="custom-dropdown__element" onClick={handleDropdownClick}>
             <div id='movie-title' className="custom-dropdown__element__title">{movie.title}</div>
             <div className="custom-dropdown__element__subtitle">
               {`${movie.vote_average} Rating, ${movie.release_date && movie.release_date.substr(0, 4)}`}
             </div>
           </li>
-
         ))}
       </ul>
     );

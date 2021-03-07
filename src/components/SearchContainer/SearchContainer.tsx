@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchButton } from './SearchButton';
+import { SearchButton } from '../Buttons/SearchButton';
 import { SearchInput } from './SearchInput';
 
 export const SearchContainer: React.FC = () => {

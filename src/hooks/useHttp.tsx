@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 
-
 export const useHttp = (url: string, dependencies: string[], shouldFetch: boolean) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [fetchedData, setFetchedData] = useState<any>(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     if (shouldFetch) {
       setIsLoading(true);
-      console.log('Sending Http request to URL: ' + url);
       fetch(url)
         .then(response => {
           if (!response.ok) {
@@ -22,7 +20,6 @@ export const useHttp = (url: string, dependencies: string[], shouldFetch: boolea
           setFetchedData(data);
         })
         .catch(err => {
-          console.log(err);
           setIsLoading(false);
           setError(err);
         });

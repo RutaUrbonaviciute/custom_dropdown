@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
+import { MovieIcon } from '../Icons/MovieIcon';
 import { InputPopoverField } from './InputPopoverField';
-import { MovieIconContainer } from './MovieIconContainer';
 
 interface Props {
   open: boolean;
@@ -24,7 +24,7 @@ export const InputPopover: React.FC<Props> = ({ open, setInputPopoverOpen, setSe
   return (
     <div id='input-field-popover' className="input-popover">
       <div className="input-popover__icon">
-        <MovieIconContainer />
+        <MovieIcon />
       </div>
       <InputPopoverField
         setInputPopoverOpen={setInputPopoverOpen}

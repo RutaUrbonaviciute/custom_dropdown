@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useHttp } from '../hooks/useHttp';
-import { CustomDropdown } from './Dropdown/CustomDropdown';
+import { API_KEY } from '../../constants';
+import { useHttp } from '../../hooks/useHttp';
+import { CustomDropdown } from '../Dropdown/CustomDropdown';
 
 interface Props {
   setInputPopoverOpen: (isOpen: boolean) => void;
@@ -8,10 +9,6 @@ interface Props {
 }
 
 export const InputPopoverField: React.FC<Props> = ({ setInputPopoverOpen, setSearchContainerValue }) => {
-  const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
-
-  console.log(API_KEY)
-
   const [inputValue, setInputValue] = useState('');
   const [inputFocus, setInputFocus] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,9 +42,6 @@ export const InputPopoverField: React.FC<Props> = ({ setInputPopoverOpen, setSea
     setInputPopoverOpen(false);
   }
 
-  // if (isLoading) return <>Loading...</>
-
-
   return (
     <>
       <div className='input-popover__field-container'>
@@ -74,5 +68,3 @@ export const InputPopoverField: React.FC<Props> = ({ setInputPopoverOpen, setSea
     </>
   )
 }
-
-//fetchedData && fetchedData.results.length > 0 &&
