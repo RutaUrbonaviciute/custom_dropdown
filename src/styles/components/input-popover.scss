@@ -1,0 +1,53 @@
+.input-popover {
+  align-items: center;
+  background: $color-white;
+  bottom: 0;
+  color: $color-dark-grey;
+  display: none;
+  margin-left: 50px;
+  opacity: 0;
+  outline: none;
+  padding: $xs-margin $s-margin;
+  position: absolute;
+  width: calc(100% - 50px);
+  opacity: 0;
+
+  &--open {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+
+  &__icon {
+    color: $color-black;
+    height: 20px;
+    width: 20px;
+  }
+
+  &__field-container {
+    text-align: left;
+    margin-left: $s-margin;
+    width: 100%;
+  }
+
+  &__input {
+    border: none;
+    background-color: $color-white;
+    padding: $xs-margin;
+    caret-color: lighten($color-light-orange, 20%);
+    font-size: 18px;
+    color: $color-dark-grey;
+    width: calc(100% - 10px);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    font-size: 12px;
+    color: $color-light-grey;
+    font-weight: 500;
+    padding-left: $xs-margin;
+  }
+}

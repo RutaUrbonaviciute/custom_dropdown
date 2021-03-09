@@ -1,0 +1,33 @@
+.custom-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  width: 100%;
+  background-color: $color-white;
+  border-top: 1px solid lightgray;
+
+  &__element {
+    border: none;
+    display: block;
+    padding: $s-margin $l-margin;
+    text-align: left;
+    width: 100%;
+
+    &__title {
+      color: $color-dark-grey;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &__subtitle {
+      font-size: 12px;
+      color: $color-light-grey;
+    }
+
+    &:hover {
+      background-color: lighten($color-light-orange, 40%);
+      cursor: pointer;
+    }
+  }
+}

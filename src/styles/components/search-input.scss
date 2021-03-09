@@ -1,0 +1,36 @@
+.search-input {
+  margin-right: 4px;
+  position: relative;
+  width: 100%;
+
+  &__button {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    border: none;
+    display: flex;
+    flex: 1;
+    height: 54px;
+    padding: 0 0 0 12px;
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      transition: ease-out 0.2s background;
+    }
+
+    &__icon {
+      height: 30px;
+      width: 30px;
+      color: $color-white;
+      margin-right: $s-margin;
+    }
+
+    &__placeholder {
+      color: $color-white;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}

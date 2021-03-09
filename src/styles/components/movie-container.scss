@@ -1,0 +1,18 @@
+.movie-container {
+  justify-content: center;
+  display: flex;
+  margin-top: $l-margin;
+
+  &__content {
+    background: $color-light-orange;
+    border-radius: 10px;
+    color: $color-white;
+    min-height: 200px;
+    padding: $m-margin;
+    width: 400px;
+  }
+
+  &__date {
+    padding: $m-margin 0;
+  }
+}
