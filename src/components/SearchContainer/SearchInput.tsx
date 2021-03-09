@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
-import { useOutsideClick } from '../../hooks/useOutsideClick';
-import { InputPopover } from '../InputPopover/InputPopover';
+import React, { useContext, useRef, useState } from 'react';
+import { SearchComponentContext } from '../../App';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import { MovieIcon } from '../Icons/MovieIcon';
+import { InputPopover } from '../InputPopover/InputPopover';
 
 export const SearchInput: React.FC = () => {
   const node = useRef<HTMLDivElement>(null);
+
+  const { state: { selectedMovie } } = useContext(SearchComponentContext);
   const [inputPopoverOpen, setInputPopoverOpen] = useState(false);
-  const [searchContainerValue, setSearchContainerValue] = useState('Enter movie name');
 
   useOutsideClick(node, () => {
     setInputPopoverOpen(false);
@@ -25,14 +27,14 @@ export const SearchInput: React.FC = () => {
           <MovieIcon />
         </div>
         <div className="search-input__button__placeholder">
-          {searchContainerValue}
+          {selectedMovie.title || 'Enter movie name'}
         </div>
       </button>
       <div ref={node}>
         <InputPopover
           open={inputPopoverOpen}
           setInputPopoverOpen={setInputPopoverOpen}
-          setSearchContainerValue={setSearchContainerValue} />
+        />
       </div>
     </div>
   );

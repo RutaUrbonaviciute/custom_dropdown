@@ -2,16 +2,21 @@
   align-items: center;
   background: $color-white;
   bottom: 0;
-  // box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5);
   color: $color-dark-grey;
   display: none;
-  margin-left: $l-margin;
+  margin-left: 50px;
+  opacity: 0;
   outline: none;
   padding: $xs-margin $s-margin;
   position: absolute;
-  // transition: all 0.3s ease-out;
-  opacity: 0;
   width: calc(100% - 50px);
+  opacity: 0;
+
+  &--open {
+    display: flex;
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
 
   &__icon {
     color: $color-black;

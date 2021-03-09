@@ -5,22 +5,18 @@ import { InputPopoverField } from './InputPopoverField';
 interface Props {
   open: boolean;
   setInputPopoverOpen: (isOpen: boolean) => void;
-  setSearchContainerValue: (title: string) => void;
 }
 
-export const InputPopover: React.FC<Props> = ({ open, setInputPopoverOpen, setSearchContainerValue }) => {
+export const InputPopover: React.FC<Props> = ({ open, setInputPopoverOpen }) => {
   useEffect(() => {
     const inputPopover = document.getElementById('input-field-popover')!;
     const inputField = document.getElementById('input-field')!;
 
     if (open) {
-      inputPopover.style.display = 'flex';
       inputField.focus();
-      inputPopover.style.opacity = '1';
-      inputPopover.style.transition = 'opacity .3s ease-out';
+      inputPopover.classList.add("input-popover--open")
     } else {
-      inputPopover.style.opacity = '0';
-      inputPopover.style.display = 'none';
+      inputPopover.classList.remove("input-popover--open")
     }
   })
 
@@ -31,7 +27,6 @@ export const InputPopover: React.FC<Props> = ({ open, setInputPopoverOpen, setSe
       </div>
       <InputPopoverField
         setInputPopoverOpen={setInputPopoverOpen}
-        setSearchContainerValue={setSearchContainerValue}
       />
     </div >
   )

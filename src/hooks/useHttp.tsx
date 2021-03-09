@@ -7,7 +7,6 @@ export const useHttp = (url: string, dependencies: string[], shouldFetch: boolea
 
   useEffect(() => {
     if (shouldFetch) {
-      setIsLoading(true);
       fetch(url)
         .then(response => {
           if (!response.ok) {

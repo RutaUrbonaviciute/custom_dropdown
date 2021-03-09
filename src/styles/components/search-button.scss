@@ -13,12 +13,12 @@
   }
 
   &:hover {
-    background-color: lighten($color-light-orange, 40%);
+    background-color: lighten($color-light-orange, 10%);
     cursor: pointer;
     transition: background-color 0.3s ease-out;
 
     #{$this}__icon {
-      color: $color-dark-grey;
+      color: $color-white;
       transition: color 0.3s ease-out;
     }
   }
