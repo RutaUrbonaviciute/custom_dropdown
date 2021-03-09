@@ -1,3 +1,1 @@
 # WCC homework
-
-## WCC homework
