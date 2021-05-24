@@ -1,3 +1,3 @@
-# WCC homework
+# Custom dropdown
 
-Homework made with CRA, SCSS and also basic implementation of typescript.
+Made with CRA, SCSS and also basic implementation of typescript.
